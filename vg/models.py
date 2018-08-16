@@ -18,7 +18,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     bio = models.TextField(max_length=500, blank=True, default='', verbose_name='Biography')
-    type_user = models.IntegerField(choices=type_user_choices, default=CLIENT)
+    type_user = models.IntegerField(choices=type_user_choices, default=TRAINER)
 
     def __str__(self):
         return 'Profile for {}'.format(self.user.username)

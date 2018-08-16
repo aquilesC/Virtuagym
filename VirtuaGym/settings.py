@@ -27,7 +27,7 @@ SECRET_KEY = 'b6yofi-z+*ua)6fq(ybg80%1#$y_=&*80n507ztw*43xx40xk$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['virtuagym.uetke.com']
 
 
 # Application definition

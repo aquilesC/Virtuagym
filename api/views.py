@@ -10,19 +10,53 @@ from api.serializers import ExerciseSerializer, DaySerializer, PlanSerializer, U
 from vg.models import Exercise, Day, Plan
 
 class UserList(generics.ListCreateAPIView):
+    """
+    get:
+    Return a list of the registered users.
+
+    post:
+    Create a new user. By default it is going to be a trainer. Trainers can also be assigned to plans.
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    get:
+    Get the details of a user.
+
+    put:
+    Update the details of a user.
+
+    delete:
+    Delete the given user
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 class ExerciseList(generics.ListCreateAPIView):
+    """
+    get:
+    List all the exercises available
+
+    post:
+    Create a new exercise
+    """
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
     permission_classes = (IsAuthenticated, IsTrainer, )
 
 class ExerciseDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    get:
+    Get the details of an exercise
+
+    put:
+    Update the exercise
+
+    delete:
+    Delete an exercise
+    """
     queryset = Exercise.objects.all()
     serializer_class = ExerciseSerializer
     permission_classes = (IsTrainer,)
