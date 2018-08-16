@@ -1,0 +1,34 @@
+{% extends 'login_base.html' %}
+
+{% block account_content %}
+    <div class="container">
+        <h1>Exercises</h1>
+        <a href="{% url 'exercise_create' %}"><button class="btn btn-primary">New</button></a>
+        {% if exercises %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Updated By</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for exercise in exercises %}
+                    <tr>
+                        <td><a href="{% url 'exercise' exercise.pk %}">{{ exercise.title }}</a></td>
+                        <td>{{ exercise.description }}</td>
+                        <td>{{ exercise.updated_date }} </td>
+                        {% if exercise.updated_by == None %}
+                            <td>{{ exercise.created_by }}</td>
+                        {% else %}
+                            <td>{{ exercise.updated_by }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

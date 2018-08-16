@@ -1,0 +1,34 @@
+{% extends 'login_base.html' %}
+
+{% block account_content %}
+    <div class="container">
+        <h1>Plans</h1>
+        <a href="{% url 'plan_create' %}"><button class="btn btn-primary">New</button></a>
+        {% if plans %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Assigned to</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Updated By</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for plan in plans %}
+                    <tr>
+                        <td><a href="{% url 'plan' plan.pk %}">{{ plan.name }}</a></td>
+                        <td>{{ plan.trainees }} <a href="{% url 'assign_plan' plan.pk %}"><button class="btn btn-info">+</button></a></td>
+                        <td>{{ plan.updated_date }} </td>
+                        {% if plan.updated_by == None %}
+                            <td>{{ plan.created_by }}</td>
+                        {% else %}
+                            <td>{{ plan.updated_by }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}

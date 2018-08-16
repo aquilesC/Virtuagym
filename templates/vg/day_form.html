@@ -1,0 +1,22 @@
+{% extends 'login_base.html' %}
+{% block account_content %}
+    <div class="container">
+        <h1 class="text-center logo my-4">
+            <a href="{% url 'home' %}">{{ SITENAME }}</a>
+        </h1>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                        <h3 class="card-title">Update Day</h3>
+                        <form method="post" novalidate>
+                            {% csrf_token %}
+                            {% include 'includes/form.html' %}
+                            <button type="submit" class="btn btn-primary btn-block">Update Day</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

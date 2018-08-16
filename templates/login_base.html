@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarWEX"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="navbar-collapse collapse">
+                <div class="nav-item"><a href="{% url 'plans' %}" class="nav-item nav-link active">Plans</a></div>
+                <div class="nav-item"><a href="{% url 'exercises' %}" class="nav-item nav-link">Exercises</a></div>
+                <div class="nav-item"><a href="{% url 'days' %}" class="nav-item nav-link">Days</a></div>
+                <div class="nav-item"><a href="#" class="nav-item nav-link">Contact</a></div>
+                <div class="nav-item"><a href="{% url 'logout' %}" class="nav-item nav-link">Logout</a></div>
+            </ul>
+    </nav>
+    <div class="container-fluid">
+        {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="col py-4 ml-3">
+        {% block account_content %}
+        {% endblock %}
+    </div>
+{% endblock body %}

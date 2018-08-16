@@ -1,0 +1,32 @@
+{% extends 'login_base.html' %}
+
+{% block account_content %}
+    <div class="container">
+        <h1>Days</h1>
+        <a href="{% url 'day_create' %}"><button class="btn btn-primary">New</button></a>
+        {% if days %}
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Exercises</th>
+                    <th scope="col">Last Updated</th>
+                    <th scope="col">Updated By</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for day in days %}
+                    <tr>
+                        <td><a href="{% url 'day' day.pk %}">{{ day }}</a></td>
+                        <td>{{ day.updated_date }} </td>
+                        {% if day.updated_by == None %}
+                            <td>{{ day.created_by }}</td>
+                        {% else %}
+                            <td>{{ day.updated_by }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
