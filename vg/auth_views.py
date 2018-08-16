@@ -18,7 +18,7 @@ class LoginView(LoginView):
 
     def form_valid(self, form):
         auth_login(self.request, form.get_user())
-        return redirect('home')
+        return redirect('exercises')
 
 
 class SignUpView(generic.CreateView):
