@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.urls import path, include
 
-from vg.auth_views import LoginView, SignUpView, index, SignUpSuccess
+from vg.auth_views import LoginView, SignUpView, index
 from vg.views_trainer import ExerciseCreate, ExerciseUpdate, DayCreate, DayUpdate, PlanUpdate, PlanCreate, AssignPlan, \
     ExerciseList, DayList, PlanList
 
@@ -32,7 +32,6 @@ urlpatterns = [
     path('', index, name='home'),
     path('login', LoginView.as_view(), name='login'),
     path('signup', SignUpView.as_view(), name='signup'),
-    path('signup_success', SignUpSuccess.as_view(), name='signup_success'),
     path('exercise', ExerciseList.as_view(), name='exercises'),
     path('exercise/create', ExerciseCreate.as_view(), name='exercise_create'),
     path('exercise/<int:pk>', ExerciseUpdate.as_view(), name='exercise'),

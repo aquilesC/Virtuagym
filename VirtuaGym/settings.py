@@ -27,7 +27,7 @@ SECRET_KEY = 'b6yofi-z+*ua)6fq(ybg80%1#$y_=&*80n507ztw*43xx40xk$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['virtuagym.uetke.com']
+ALLOWED_HOSTS = ['virtuagym.uetke.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -128,7 +128,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MESSAGE_TAGS = {
     messages.DEBUG: 'alert-info',

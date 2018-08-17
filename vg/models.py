@@ -1,4 +1,5 @@
 import datetime
+import threading
 
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
@@ -146,7 +147,9 @@ def plan_update(sender, **kwargs):
         if len(recent_updates) == 0:
             update = PlanUpdates(sent_to=user, plan=plan, updated_by=plan.updated_by)
             update.save()
-            send_mail(sbj, msg, from_email, ['{} <{}>'.format(user.username,user.email)])
+            t = threading.Thread(target=send_mail, args=(sbj, msg, from_email, ['{} <{}>'.format(user.username,user.email)]))
+            t.start()
+
 
 
 
